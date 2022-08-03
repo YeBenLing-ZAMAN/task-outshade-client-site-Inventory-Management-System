@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import Loading from '../Loading';
 
 const Login = () => {
     const [user, setUser] = useState(null);
@@ -36,16 +37,16 @@ const Login = () => {
                 }
             })
     }
-/* 
-    const [token] = useToken(user);
-    if (token) {
-        navigate('/layout');
-    }
+
+    // const [token] = useToken(user);
+    // if (token) {
+    //     navigate('/layout');
+    // }
 
     if(false){
         return <Loading></Loading>
     } 
-*/
+
 
     return (
         <>
