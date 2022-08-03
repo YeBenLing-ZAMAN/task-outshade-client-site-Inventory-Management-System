@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import Loading from '../Loading';
 import AddProductOnModal from './AddProductOnModal';
+import DeleteProductOnModal from './DeleteProductOnModal';
 import ProductRow from './ProductRow';
 const Products = () => {
     const [searchItem, setSearchItem] = useState('');
-    const [forModalPopUp, setForModalPopUp] = useState(null);
     const [addmodalPopUpSuccesMessage, setaddmodalPopUpSuccesMessage] = useState(true);
-
+    const [reLoadchecked, setReLoadChecked] = useState(false);
+    
     /* store all the product information for API calling */
     const [productList, setProductList] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    
+    
+    /* modal tiggle for activaty */
+    const [forModalPopUp, setForModalPopUp] = useState(null);
+    const [deleteProduct, setDeleteProduct] = useState(null);
 
 
 
@@ -49,17 +55,25 @@ const Products = () => {
                 forModalPopUp && <AddProductOnModal
                     setForModalPopUp={setForModalPopUp}
                     forModalPopUp={forModalPopUp}
-                    // setReLoadChecked={setReLoadChecked}
+                    setReLoadChecked={setReLoadChecked}
                     addmodalPopUpSuccesMessage={addmodalPopUpSuccesMessage}
                     setaddmodalPopUpSuccesMessage={setaddmodalPopUpSuccesMessage}
                 ></AddProductOnModal>
             }
 
+            {/* delete one Product item button click on BillsRow handle and getting with a modal */}
+            {
+                deleteProduct && <DeleteProductOnModal
+                setDeleteProduct={setDeleteProduct}
+                    deleteProduct={deleteProduct}
+                    setReLoadChecked={setReLoadChecked}
+                ></DeleteProductOnModal>
+            }
 
 
 
 
-            {/* all bill information stored and showing on list */}
+            {/* all product information stored and showing on list */}
             <div className="overflow-x-auto max-w-7xl mx-auto mt-6 table-container">
                 <table className="table table-compact w-full">
                     {/* <!-- head --> */}
