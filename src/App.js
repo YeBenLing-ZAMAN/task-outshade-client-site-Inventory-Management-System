@@ -1,10 +1,12 @@
-import './App.css';
+import Login from './Component/Authencation/Login';
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-    <h1 className=''>this is a new file</h1>
-    <button class="btn btn-primary">Button</button>
+      <Routes>
+        <Route path="login" element={<Login />} />
+      </Routes>
 
     </>
   );
