@@ -2,20 +2,22 @@ import React, { useState } from 'react';
 import Loading from '../Loading';
 import AddProductOnModal from './AddProductOnModal';
 import DeleteProductOnModal from './DeleteProductOnModal';
+import EditProductOnModal from './EditProductOnModal';
 import ProductRow from './ProductRow';
 const Products = () => {
     const [searchItem, setSearchItem] = useState('');
     const [addmodalPopUpSuccesMessage, setaddmodalPopUpSuccesMessage] = useState(true);
     const [reLoadchecked, setReLoadChecked] = useState(false);
-    
+
     /* store all the product information for API calling */
     const [productList, setProductList] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    
-    
-    /* modal tiggle for activaty */
+
+
+    /* modal tiggle for activaty and store product information*/
     const [forModalPopUp, setForModalPopUp] = useState(null);
     const [deleteProduct, setDeleteProduct] = useState(null);
+    const [editProduct, setEditProduct] = useState(null);
 
 
 
@@ -64,10 +66,20 @@ const Products = () => {
             {/* delete one Product item button click on BillsRow handle and getting with a modal */}
             {
                 deleteProduct && <DeleteProductOnModal
-                setDeleteProduct={setDeleteProduct}
+                    setDeleteProduct={setDeleteProduct}
                     deleteProduct={deleteProduct}
                     setReLoadChecked={setReLoadChecked}
                 ></DeleteProductOnModal>
+            }
+
+
+            {/* edit one product item button click on BillsRow handle and getting with a modal */}
+            {
+                editProduct && <EditProductOnModal
+                setEditProduct={setEditProduct}
+                    editProduct={editProduct}
+                    setReLoadChecked={setReLoadChecked}
+                ></EditProductOnModal>
             }
 
 

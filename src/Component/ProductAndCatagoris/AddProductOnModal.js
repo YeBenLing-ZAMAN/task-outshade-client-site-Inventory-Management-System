@@ -12,9 +12,10 @@ const AddProductOnModal = ({  forModalPopUp, setaddmodalPopUpSuccesMessage, addm
     const onSubmit = async data => {
         // console.log(data);
         const bill_info = {
-            full_name: data.name,
+            name: data.name,
             price: data.price,
             quantity: parseFloat(data.quantity),
+            // catagory add kora baki ache
             // status: (billingList[billinLength].status +1)
         }
         await fetch(``, {
