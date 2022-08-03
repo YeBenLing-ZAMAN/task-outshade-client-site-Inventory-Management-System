@@ -5,6 +5,7 @@ import NotFoundPage from './Component/NotFoundPage';
 import Products from './Component/ProductAndCatagoris/Products';
 import Navbar from './Component/Navbar';
 import Dashboard from './Component/Dashboard/Dashboard';
+import Catagory from './Component/ProductAndCatagoris/Catagory';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Route path="dashboard" element={
           <Dashboard />
         }>
-          <Route index element={<Products></Products>}></Route>
+          <Route index element={<Products/>}></Route>
+          <Route path="catagory" element={<Catagory/>}></Route>
         </Route>
         <Route path="product" element={<Products />} />
         <Route path="*" element={<NotFoundPage />} />

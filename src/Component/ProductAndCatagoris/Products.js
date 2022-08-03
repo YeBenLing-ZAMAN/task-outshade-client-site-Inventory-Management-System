@@ -76,7 +76,7 @@ const Products = () => {
             {/* edit one product item button click on BillsRow handle and getting with a modal */}
             {
                 editProduct && <EditProductOnModal
-                setEditProduct={setEditProduct}
+                    setEditProduct={setEditProduct}
                     editProduct={editProduct}
                     setReLoadChecked={setReLoadChecked}
                 ></EditProductOnModal>
@@ -105,6 +105,7 @@ const Products = () => {
                                 key={product._id}
                                 product={product}
                                 index={index}
+                                setEditProduct={setEditProduct}
                             ></ProductRow>)
                         }
 
