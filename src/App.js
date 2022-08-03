@@ -9,14 +9,16 @@ import Dashboard from './Component/Dashboard/Dashboard';
 function App() {
   return (
     <>
-    <Navbar></Navbar>
+      <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Signin />} />
         <Route path="login" element={<Login />} />
         <Route path="signin" element={<Signin />} />
         <Route path="dashboard" element={
-            <Dashboard />
-        }></Route>
+          <Dashboard />
+        }>
+          <Route index element={<Products></Products>}></Route>
+        </Route>
         <Route path="product" element={<Products />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
