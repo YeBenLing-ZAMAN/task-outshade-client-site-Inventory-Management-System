@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <>
+        <div>
             {/* navbar */}
             <div className="bg-base-300">
                 <div className='navbar max-w-7xl mx-auto'>
@@ -29,7 +29,7 @@ const Navbar = () => {
                 </div>
             </div>
 
-        </>
+        </div>
     );
 };
 
