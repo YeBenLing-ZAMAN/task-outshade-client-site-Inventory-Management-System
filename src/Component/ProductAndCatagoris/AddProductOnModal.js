@@ -166,7 +166,7 @@ const AddProductOnModal = ({ forModalPopUp, setaddmodalPopUpSuccesMessage, addmo
                                                     }
                                                 })}>
                                                 <option value="mobile">Mobile</option>
-                                                <option value="phone">Phone</option>
+                                                <option value="bag">Bag</option>
                                             </select>
 
 

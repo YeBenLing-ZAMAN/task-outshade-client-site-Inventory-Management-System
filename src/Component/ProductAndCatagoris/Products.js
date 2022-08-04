@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Loading from '../Loading';
 import AddProductOnModal from './AddProductOnModal';
 import DeleteProductOnModal from './DeleteProductOnModal';
@@ -18,6 +18,8 @@ const Products = () => {
     const [forModalPopUp, setForModalPopUp] = useState(null);
     const [deleteProduct, setDeleteProduct] = useState(null);
     const [editProduct, setEditProduct] = useState(null);
+    const [editmodalPopUpSuccesMessage, setEditmodalPopUpSuccesMessage] = useState(true);
+
 
 
 
@@ -27,13 +29,33 @@ const Products = () => {
         setaddmodalPopUpSuccesMessage(true);
     }
 
+    /*  data fetch korte hobe ei khane */
+    useEffect(() => {
+        setIsLoading(true);
+        const loadData = async () => {
+            await fetch("http://localhost:5000/product_list", {
+                method: "GET",
+                headers: {
+                    // authorization: `Bearer ${localStorage.getItem('accesstoken')}`
+                }
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    // console.log(data);
+                    setProductList(data);
+                    setReLoadChecked(false);
+                    setIsLoading(false);
+                });
+        }
+        loadData();
+    }, [reLoadchecked]);
+
+    // console.log(productList);
+    /*  */
+
     if (isLoading) {
         return <Loading></Loading>
     }
-
-    /*  data fetch korte hobe ei khane */
-
-    /*  */
 
 
     return (
@@ -79,6 +101,8 @@ const Products = () => {
                     setEditProduct={setEditProduct}
                     editProduct={editProduct}
                     setReLoadChecked={setReLoadChecked}
+                    setEditmodalPopUpSuccesMessage={setEditmodalPopUpSuccesMessage}
+                    editmodalPopUpSuccesMessage={editmodalPopUpSuccesMessage}
                 ></EditProductOnModal>
             }
 
@@ -106,6 +130,7 @@ const Products = () => {
                                 product={product}
                                 index={index}
                                 setEditProduct={setEditProduct}
+                                setEditmodalPopUpSuccesMessage={setEditmodalPopUpSuccesMessage}
                             ></ProductRow>)
                         }
 
