@@ -13,7 +13,6 @@ const Login = () => {
 
 
     /* use context API to store user information */
-    const [userInfor, setUserInfo] = useContext(UserContext);
 
     const onSubmit = async data => {
         // console.log(data);
@@ -49,7 +48,6 @@ const Login = () => {
     }
 
     if (user) { 
-        setUserInfo(user);
         navigate('/dashboard');
     }
 

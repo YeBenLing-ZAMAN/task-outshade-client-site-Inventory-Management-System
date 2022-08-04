@@ -15,4 +15,4 @@ here example for user and password:
 - REACT HOOKS FORM 
 
 ## website live link
-[Live view]()
+[Live view](https://outshade-job-task-yenbenlink.netlify.app/)

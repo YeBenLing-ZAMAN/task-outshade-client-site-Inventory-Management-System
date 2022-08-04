@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductRow = ({product,setEditProduct,setDeleteProduct,setEditmodalPopUpSuccesMessage}) => {
+const ProductRow = ({product,setEditProduct,setDeleteProduct,setEditmodalPopUpSuccesMessage,index}) => {
     const {name, price, quantity, catagory, _id } = product;
     // console.log(product);
     const handleEditbutton = (_id)=>{
@@ -9,7 +9,7 @@ const ProductRow = ({product,setEditProduct,setDeleteProduct,setEditmodalPopUpSu
     } 
     return (
         <tr>
-            <th>{_id}</th>
+            <th>{index}</th>
             <td>{name}</td>
             <td>${price}</td>
             <td>{quantity}/pice</td>

@@ -7,20 +7,15 @@ import Navbar from './Component/Navbar';
 import Dashboard from './Component/Dashboard/Dashboard';
 import Catagory from './Component/ProductAndCatagoris/Catagory';
 import Profile from './Component/Profile';
-import { createContext, useState } from 'react';
 
 
-
-export const UserContext = createContext("user");
 
 function App() {
-  const [userInfor, setUserInfo] = useState({});
 
 
 
   return (
     <>
-      <UserContext.Provider value={[userInfor, setUserInfo]}>
         <Navbar></Navbar>
         <Routes>
           <Route path="/" element={<Signin />} />
@@ -36,8 +31,6 @@ function App() {
           <Route path="product" element={<Products />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </UserContext.Provider>
-
     </>
   );
 }

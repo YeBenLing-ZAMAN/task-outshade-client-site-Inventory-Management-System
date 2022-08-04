@@ -1,33 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../App';
 
 const Navbar = () => {
-    const [userInfor, setUserInfo] = useContext(UserContext);
-    console.log(userInfor);
-    const email = userInfor.email;
-    const [user, setUser] = useState([])
-    console.log(email);
-    
-
-    fetch(`https://outshado.herokuapp.com/userInfor/${email}`, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-            }
-        })
-            .then(res => res.json())
-            .then(serverData => {
-                // console.log('user data', serverData);
-                console.log(serverData);
-                if (serverData?.email) {
-                    console.log(serverData);
-                } else {
-                    // console.log('failed');
-                    
-                }
-            })
-
     return (
         <>
             {/* navbar */}
