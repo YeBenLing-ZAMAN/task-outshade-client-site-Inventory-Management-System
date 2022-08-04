@@ -75,7 +75,7 @@ const EditProductOnModal = ({ setReLoadChecked, editProduct }) => {
 
     const onSubmit = async (data, event) => {
         product.catagory = data.catagory;
-        console.log(product);
+        // console.log(product);
 
         await fetch(`http://localhost:5000/update_product/${_id}`, {
             method: 'PATCH',

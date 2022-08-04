@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 const AddCatagoryOnModal = ({ forModalPopUp, addmodalPopUpSuccesMessage, setaddmodalPopUpSuccesMessage }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [addtoggle, setToggle] = useState(true);
 
     /* for developement process handle this  */
+    // need a reloader for the reload this page
     /*  */
 
     const onSubmit = async data => {
         // console.log(data);
         const catagoryInfo = {
-            catagory: data.name,
+            catagory: data.name.toLowerCase(),
         }
         console.log(catagoryInfo);
         await fetch(`http://localhost:5000/add_catagory`, {

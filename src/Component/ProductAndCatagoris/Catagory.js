@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Loading from '../Loading';
 import AddCatagoryOnModal from './AddCatagoryOnModal';
 import CatagoryRow from './CatagoryRow';
+import DeleteCatagoryOnModal from './DeleteCatagoryOnModal';
 
 const Catagory = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [searchItem, setSearchItem] = useState('');
+    const [allcatagory, setAllCatagory] = useState([]);
+    const [catagoryReLoader, setCatagoryReLoader] = useState(false);
 
 
     /* store system */
-    const [catagoryList, setCatagoryList] = useState([]);
+    const [catagoryDelete, setCatagoryDelete] = useState(null);
 
     /* for modal information */
     const [forModalPopUp, setForModalPopUp] = useState(null);
@@ -22,6 +25,26 @@ const Catagory = () => {
         setaddmodalPopUpSuccesMessage(true);
 
     }
+
+    useEffect(() => {
+        setIsLoading(true);
+        // console.log(id);
+        const loadData = async () => {
+            await fetch(`http://localhost:5000/catagory_list`, {
+                method: "GET",
+                headers: {
+                    // authorization: `Bearer ${localStorage.getItem('accesstoken')}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setAllCatagory(data);
+                    setIsLoading(false);
+                    setCatagoryReLoader = (false);
+                })
+        }
+        loadData();
+    }, [catagoryReLoader])
 
     if (isLoading) {
         return <Loading></Loading>
@@ -43,6 +66,18 @@ const Catagory = () => {
             </div>
 
 
+            {/* delete a catagory on modal */}
+
+            {
+                catagoryDelete && <DeleteCatagoryOnModal
+                    setCatagoryDelete={setCatagoryDelete}
+                    catagoryDelete={catagoryDelete}
+                    setCatagoryReLoader={setCatagoryReLoader}
+                ></DeleteCatagoryOnModal>
+            }
+
+
+            {/* add catagory modal on the list */}
             {
                 forModalPopUp && <AddCatagoryOnModal
                     setForModalPopUp={setForModalPopUp}
@@ -62,17 +97,18 @@ const Catagory = () => {
                         <tr>
                             <th>No</th>
                             <th>Pruduct Catagory</th>
-                            <th>Numebr of Product</th>
-                            <th>Total Product</th>
+                            <th>Items Listed On This Catagory</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            catagoryList?.map((product, index) => <CatagoryRow
-                                key={product._id}
-                                product={product}
+                            allcatagory?.map((type, index) => <CatagoryRow
+                                key={type._id}
+                                type={type}
                                 index={index}
+                                setCatagoryReLoader={setCatagoryReLoader}
+                                setCatagoryDelete={setCatagoryDelete}
                             ></CatagoryRow>)
                         }
 

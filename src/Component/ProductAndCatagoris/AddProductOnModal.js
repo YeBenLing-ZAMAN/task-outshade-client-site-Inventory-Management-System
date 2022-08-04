@@ -1,12 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, Controller } from "react-hook-form";
+import Loading from '../Loading';
 
 const AddProductOnModal = ({ forModalPopUp, setaddmodalPopUpSuccesMessage, addmodalPopUpSuccesMessage, setReLoadChecked }) => {
     const { register, formState: { errors }, handleSubmit, control, reset } = useForm();
     const [addtoggle, setToggle] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+    const [allcatagory, setAllCatagory] = useState([]);
 
     /* for developement process handle this  */
     /*  */
+    useEffect(() => {
+        setIsLoading(true);
+        // console.log(id);
+        const loadData = async () => {
+            await fetch(`http://localhost:5000/catagory_list`, {
+                method: "GET",
+                headers: {
+                    // authorization: `Bearer ${localStorage.getItem('accesstoken')}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setAllCatagory(data);
+                    setIsLoading(false);
+                })
+        }
+        loadData();
+    }, [])
 
     const onSubmit = async data => {
         // console.log(data);
@@ -40,6 +61,10 @@ const AddProductOnModal = ({ forModalPopUp, setaddmodalPopUpSuccesMessage, addmo
             })
     }
 
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
     return (
         <>
             <div>
@@ -60,7 +85,7 @@ const AddProductOnModal = ({ forModalPopUp, setaddmodalPopUpSuccesMessage, addmo
 
                         {
                             addmodalPopUpSuccesMessage ? <div className="card w-96 bg-base-100 px-1 mx-auto">
-                                <div className="card-body" style={{"paddingTop":"20px", "paddingBottom":"10px"}}>
+                                <div className="card-body" style={{ "paddingTop": "20px", "paddingBottom": "10px" }}>
 
                                     <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -165,8 +190,9 @@ const AddProductOnModal = ({ forModalPopUp, setaddmodalPopUpSuccesMessage, addmo
                                                         message: 'Your are not select any catagory'
                                                     }
                                                 })}>
-                                                <option value="mobile">Mobile</option>
-                                                <option value="bag">Bag</option>
+                                                {
+                                                    allcatagory?.map(item => <option key={item._id} value={item.catagory}>{item.catagory}</option>)
+                                                }
                                             </select>
 
 

@@ -13,15 +13,15 @@ const Navbar = () => {
                     <div className="flex-none">
                         <p className="font-bold">user name<span></span> </p>
 
-                        <div class="dropdown dropdown-end mt-1">
-                            <label tabindex="0" class="">
-                                <div class="avatar mx-2">
-                                    <div class="w-10 rounded-full ring ring-offset-base-100 ring-offset-2">
+                        <div className="dropdown dropdown-end mt-1">
+                            <label tabIndex="0" className="">
+                                <div className="avatar mx-2">
+                                    <div className="w-10 rounded-full ring ring-offset-base-100 ring-offset-2">
                                         <img src="https://source.unsplash.com/mEZ3PoFGs_k" />
                                     </div>
                                 </div>
                             </label>
-                            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                            <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <li><Link to='/dashboard/profile'>My Profile</Link></li>
                             </ul>
                         </div>
