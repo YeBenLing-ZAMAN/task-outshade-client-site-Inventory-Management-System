@@ -6,6 +6,7 @@ import Products from './Component/ProductAndCatagoris/Products';
 import Navbar from './Component/Navbar';
 import Dashboard from './Component/Dashboard/Dashboard';
 import Catagory from './Component/ProductAndCatagoris/Catagory';
+import Profile from './Component/Profile';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         }>
           <Route index element={<Products/>}></Route>
           <Route path="catagory" element={<Catagory/>}></Route>
+          <Route path="profile" element={<Profile/>}></Route>
         </Route>
         <Route path="product" element={<Products />} />
         <Route path="*" element={<NotFoundPage />} />

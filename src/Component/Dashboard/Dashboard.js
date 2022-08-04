@@ -23,7 +23,8 @@ const Dashboard = () => {
                     <ul className="menu p-4 overflow-y-auto w-48 bg-base-200 text-base-content ">
                         {/* <!-- Sidebar content here --> */}
                         <li className='mb-2'><Link to='/dashboard'>Products</Link></li>
-                        <li><Link to='/dashboard/catagory'>Category</Link></li>
+                        <li className='mb-2'><Link to='/dashboard/catagory'>Category</Link></li>
+                        <li className='mb-2'><Link to='/dashboard/profile'>My Profile</Link></li>
                     </ul>
 
                 </div>

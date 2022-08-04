@@ -11,7 +11,7 @@ const AddProductOnModal = ({  forModalPopUp, setaddmodalPopUpSuccesMessage, addm
 
     const onSubmit = async data => {
         // console.log(data);
-        const bill_info = {
+        const productInfo = {
             name: data.name,
             price: data.price,
             quantity: parseFloat(data.quantity),
@@ -23,7 +23,7 @@ const AddProductOnModal = ({  forModalPopUp, setaddmodalPopUpSuccesMessage, addm
             headers: {
                 'content-type': 'application/json',
             },
-            body: JSON.stringify(bill_info)
+            body: JSON.stringify(productInfo)
         })
             .then(res => res.json())
             .then(inserted => {

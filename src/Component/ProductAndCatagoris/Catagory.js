@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Loading from '../Loading';
+import AddCatagoryOnModal from './AddCatagoryOnModal';
 import CatagoryRow from './CatagoryRow';
 
 const Catagory = () => {
@@ -10,8 +11,15 @@ const Catagory = () => {
     /* store system */
     const [catagoryList, setCatagoryList] = useState([]);
 
+    /* for modal information */
+    const [forModalPopUp, setForModalPopUp] = useState(null);
+    const [addmodalPopUpSuccesMessage, setaddmodalPopUpSuccesMessage] = useState(true);
+
+
 
     const clicksModalPopUpSuccesMessagehandle = () => {
+        setForModalPopUp(true);
+        setaddmodalPopUpSuccesMessage(true);
 
     }
 
@@ -29,10 +37,20 @@ const Catagory = () => {
                         </div>
                     </div>
                     <div className="flex-none gap-2">
-                        <label htmlFor="my-modal-6" onClick={() => clicksModalPopUpSuccesMessagehandle()} className="btn btn-primary modal-button">Add Catagory</label>
+                        <label htmlFor="add_catagory_modal" onClick={() => clicksModalPopUpSuccesMessagehandle()} className="btn btn-primary modal-button">Add Catagory</label>
                     </div>
                 </div>
             </div>
+
+
+            {
+                forModalPopUp && <AddCatagoryOnModal
+                    setForModalPopUp={setForModalPopUp}
+                    forModalPopUp={forModalPopUp}
+                    setaddmodalPopUpSuccesMessage={setaddmodalPopUpSuccesMessage}
+                    addmodalPopUpSuccesMessage={addmodalPopUpSuccesMessage}
+                ></AddCatagoryOnModal>
+            }
 
 
 

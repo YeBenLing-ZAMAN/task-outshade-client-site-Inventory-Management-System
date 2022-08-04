@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
         <>
-          {/* navbar */}
-          <div className="bg-base-300">
+            {/* navbar */}
+            <div className="bg-base-300">
                 <div className='navbar max-w-7xl mx-auto'>
                     <div className="flex-1">
                         <p className="normal-case text-xl" >Logo</p>
@@ -21,13 +22,13 @@ const Navbar = () => {
                                 </div>
                             </label>
                             <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li><a>my profile</a></li>
+                                <li><Link to='/dashboard/profile'>My Profile</Link></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-  
+
         </>
     );
 };
