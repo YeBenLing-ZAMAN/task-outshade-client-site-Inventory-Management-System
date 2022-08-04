@@ -69,7 +69,7 @@ const AddCatagoryOnModal = ({ forModalPopUp, addmodalPopUpSuccesMessage, setaddm
 
                                             <input
                                                 type="name"
-                                                placeholder="Enter Your Name"
+                                                placeholder="Enter Catagory Name"
                                                 className="input input-bordered w-full max-w-xs"
                                                 {...register("name", {
                                                     required: {

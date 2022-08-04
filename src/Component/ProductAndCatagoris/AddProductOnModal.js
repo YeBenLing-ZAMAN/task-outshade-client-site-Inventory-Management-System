@@ -16,9 +16,9 @@ const AddProductOnModal = ({ forModalPopUp, setaddmodalPopUpSuccesMessage, addmo
             quantity: parseFloat(data.quantity),
             catagory: data.catagory
         }
-        // console.log(productInfo);
-        
-        await fetch(``, {
+        console.log(productInfo);
+
+        await fetch(`http://localhost:5000/add_product`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -59,8 +59,8 @@ const AddProductOnModal = ({ forModalPopUp, setaddmodalPopUpSuccesMessage, addmo
                         {/*Billing infomation form section*/}
 
                         {
-                            addmodalPopUpSuccesMessage ? <div className="card w-96 bg-base-100 p-1 mx-auto">
-                                <div className="card-body">
+                            addmodalPopUpSuccesMessage ? <div className="card w-96 bg-base-100 px-1 mx-auto">
+                                <div className="card-body" style={{"paddingTop":"20px", "paddingBottom":"10px"}}>
 
                                     <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -182,7 +182,7 @@ const AddProductOnModal = ({ forModalPopUp, setaddmodalPopUpSuccesMessage, addmo
 
 
 
-                                        <input className='btn w-full max-w-xs text-white mt-10' type="submit" value="add" />
+                                        <input className='btn w-full max-w-xs text-white mt-4' type="submit" value="add" />
                                     </form>
                                 </div>
                             </div> : <h1 className='text-xl text-red-500'>product successfully Add</h1>
