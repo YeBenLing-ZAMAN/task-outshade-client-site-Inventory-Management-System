@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from "react-hook-form";
 
-
-const AddProductOnModal = ({  forModalPopUp, setaddmodalPopUpSuccesMessage, addmodalPopUpSuccesMessage, setReLoadChecked }) => {
+const AddProductOnModal = ({ forModalPopUp, setaddmodalPopUpSuccesMessage, addmodalPopUpSuccesMessage, setReLoadChecked }) => {
     const { register, formState: { errors }, handleSubmit, control, reset } = useForm();
     const [addtoggle, setToggle] = useState(true);
 
@@ -13,11 +12,12 @@ const AddProductOnModal = ({  forModalPopUp, setaddmodalPopUpSuccesMessage, addm
         // console.log(data);
         const productInfo = {
             name: data.name,
-            price: data.price,
+            price: parseInt(data.price),
             quantity: parseFloat(data.quantity),
-            // catagory add kora baki ache
-            // status: (billingList[billinLength].status +1)
+            catagory: data.catagory
         }
+        // console.log(productInfo);
+        
         await fetch(``, {
             method: 'POST',
             headers: {
@@ -101,7 +101,7 @@ const AddProductOnModal = ({  forModalPopUp, setaddmodalPopUpSuccesMessage, addm
                                                 type="number"
                                                 placeholder="Enter product Price"
                                                 className="input input-bordered w-full max-w-xs"
-                                                {...register("price ", {
+                                                {...register("price", {
                                                     required: {
                                                         value: true,
                                                         message: 'product Price is Required'
@@ -150,6 +150,37 @@ const AddProductOnModal = ({  forModalPopUp, setaddmodalPopUpSuccesMessage, addm
 
                                             </label>
                                         </div>
+
+                                        {/* product catagory */}
+                                        <div className="form-control w-full max-w-xs mt-2">
+                                            <label className="label">
+                                                <span className="label-text">catagory</span>
+                                            </label>
+
+                                            <select
+                                                className="input input-bordered w-full max-w-xs"
+                                                {...register("catagory", {
+                                                    required: {
+                                                        value: true,
+                                                        message: 'Your are not select any catagory'
+                                                    }
+                                                })}>
+                                                <option value="mobile">Mobile</option>
+                                                <option value="phone">Phone</option>
+                                            </select>
+
+
+                                            <label className="label">
+                                                {errors.catagory?.type === 'required' && <span
+                                                    className="label-text-alt text-red-500">
+                                                    {errors.catagory.message}
+                                                </span>}
+
+                                            </label>
+                                        </div>
+
+
+
 
                                         <input className='btn w-full max-w-xs text-white mt-10' type="submit" value="add" />
                                     </form>
