@@ -13,7 +13,7 @@ const Signin = () => {
         // console.log(data);
         const userInfo = { name: data.name, email:data.email, password:data.password };
         console.log(userInfo);
-        fetch(`http://localhost:5000/signin`, {
+        fetch(`https://outshado.herokuapp.com/signin`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

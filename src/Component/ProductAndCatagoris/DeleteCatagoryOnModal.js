@@ -2,11 +2,11 @@ import React from 'react';
 
 const DeleteCatagoryOnModal = ({ catagoryDelete, setCatagoryDelete, setCatagoryReLoader }) => {
     // console.log(catagoryDelete);
-    const { catagory, _id } = catagoryDelete;
+    const { catagory, details, _id } = catagoryDelete;
     const handleDelete = (_id) => {
         console.log(_id);
 
-        fetch(`http://localhost:5000/delete_catagory/${_id}`, {
+        fetch(`https://outshado.herokuapp.com/delete_catagory/${_id}`, {
             method: 'DELETE',
             headers: {
                 // authorization: `Bearer ${localStorage.getItem('accesstoken')}`
@@ -47,8 +47,8 @@ const DeleteCatagoryOnModal = ({ catagoryDelete, setCatagoryDelete, setCatagoryR
                                     <td className='uppercase'>{catagory}</td>
                                 </tr>
                                 <tr>
-                                    <th>Product Listed on the Catagory</th>
-                                    <td>3000/items</td>
+                                    <th>Catagory Details</th>
+                                    <td>{details}</td>
                                 </tr>
                             </tbody>
                         </table>

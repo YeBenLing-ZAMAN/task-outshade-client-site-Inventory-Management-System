@@ -13,9 +13,10 @@ const AddCatagoryOnModal = ({ forModalPopUp, addmodalPopUpSuccesMessage, setaddm
         // console.log(data);
         const catagoryInfo = {
             catagory: data.name.toLowerCase(),
+            details: data.details.toLowerCase()
         }
         console.log(catagoryInfo);
-        await fetch(`http://localhost:5000/add_catagory`, {
+        await fetch(`https://outshado.herokuapp.com/add_catagory`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -71,7 +72,7 @@ const AddCatagoryOnModal = ({ forModalPopUp, addmodalPopUpSuccesMessage, setaddm
 
                                             <input
                                                 type="name"
-                                                placeholder="Enter Catagory Name"
+                                                placeholder="Enter Catagory Details"
                                                 className="input input-bordered w-full max-w-xs"
                                                 {...register("name", {
                                                     required: {
@@ -85,6 +86,32 @@ const AddCatagoryOnModal = ({ forModalPopUp, addmodalPopUpSuccesMessage, setaddm
                                                 {errors.name?.type === 'required' && <span
                                                     className="label-text-alt text-red-500">
                                                     {errors.name.message}
+                                                </span>}
+                                            </label>
+                                        </div>
+
+                                        {/* catagories details  */}
+                                        <div className="form-control w-full max-w-xs">
+                                            <label className="label">
+                                                <span className="label-text">Catagory Details</span>
+                                            </label>
+
+                                            <input
+                                                type="text"
+                                                placeholder="Enter Catagory Name"
+                                                className="input input-bordered w-full max-w-xs"
+                                                {...register("details", {
+                                                    required: {
+                                                        value: true,
+                                                        message: 'Catagory Details is Required'
+                                                    }
+                                                })}
+                                            />
+
+                                            <label className="label">
+                                                {errors.details?.type === 'required' && <span
+                                                    className="label-text-alt text-red-500">
+                                                    {errors.details.message}
                                                 </span>}
                                             </label>
                                         </div>

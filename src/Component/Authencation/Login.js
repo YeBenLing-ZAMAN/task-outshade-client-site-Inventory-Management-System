@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../App';
 import Loading from '../Loading';
 
 const Login = () => {
@@ -8,14 +9,18 @@ const Login = () => {
     const [loginError, setLoginError] = useState("");
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false)
 
 
+    /* use context API to store user information */
+    const [userInfor, setUserInfo] = useContext(UserContext);
 
     const onSubmit = async data => {
         // console.log(data);
         const email = data.email;
         // console.log(email);
-        fetch(`http://localhost:5000/login/${email}`, {
+        setIsLoading(true);
+        fetch(`https://outshado.herokuapp.com/login/${email}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -29,22 +34,26 @@ const Login = () => {
                     if (serverData?.password === data.password) {
                         console.log("password matched");
                         setUser(data);
+                        setIsLoading(false);
+
                     } else {
                         setLoginError('password is not match please retry');
+                        setIsLoading(false);
                     }
                 } else {
                     // console.log('failed');
                     setLoginError('Email/user is not regiester yet');
+                    setIsLoading(false);
                 }
             })
     }
 
-    // const [token] = useToken(user);
-    // if (token) {
-    //     navigate('/layout');
-    // }
+    if (user) { 
+        setUserInfo(user);
+        navigate('/dashboard');
+    }
 
-    if (false) {
+    if (isLoading) {
         return <Loading></Loading>
     }
 

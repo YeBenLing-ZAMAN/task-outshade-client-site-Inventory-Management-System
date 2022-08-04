@@ -7,25 +7,36 @@ import Navbar from './Component/Navbar';
 import Dashboard from './Component/Dashboard/Dashboard';
 import Catagory from './Component/ProductAndCatagoris/Catagory';
 import Profile from './Component/Profile';
+import { createContext, useState } from 'react';
+
+
+
+export const UserContext = createContext("user");
 
 function App() {
+  const [userInfor, setUserInfo] = useState({});
+
+
+
   return (
     <>
-      <Navbar></Navbar>
-      <Routes>
-        <Route path="/" element={<Signin />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signin" element={<Signin />} />
-        <Route path="dashboard" element={
-          <Dashboard />
-        }>
-          <Route index element={<Products/>}></Route>
-          <Route path="catagory" element={<Catagory/>}></Route>
-          <Route path="profile" element={<Profile/>}></Route>
-        </Route>
-        <Route path="product" element={<Products />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <UserContext.Provider value={[userInfor, setUserInfo]}>
+        <Navbar></Navbar>
+        <Routes>
+          <Route path="/" element={<Signin />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signin" element={<Signin />} />
+          <Route path="dashboard" element={
+            <Dashboard />
+          }>
+            <Route index element={<Products />}></Route>
+            <Route path="catagory" element={<Catagory />}></Route>
+            <Route path="profile" element={<Profile />}></Route>
+          </Route>
+          <Route path="product" element={<Products />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </UserContext.Provider>
 
     </>
   );

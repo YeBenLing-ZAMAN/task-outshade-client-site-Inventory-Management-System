@@ -33,7 +33,7 @@ const Products = () => {
     useEffect(() => {
         setIsLoading(true);
         const loadData = async () => {
-            await fetch("http://localhost:5000/product_list", {
+            await fetch("https://outshado.herokuapp.com/product_list", {
                 method: "GET",
                 headers: {
                     // authorization: `Bearer ${localStorage.getItem('accesstoken')}`
@@ -63,9 +63,9 @@ const Products = () => {
             <div className='mt-1'>
                 <div className="navbar bg-base-300 max-w-7xl mx-auto">
                     <div className="flex-1">
-                        <p className="text-primary text-xl font-bold mr-5 uppercase">product Search: </p>
+                        <p className="text-primary text-xl font-bold mr-5 uppercase">product: </p>
                         <div className="form-control w-full max-w-xs">
-                            <input type="text" placeholder="Search . . ." onChange={(event) => setSearchItem(event.target.value)} className="input input-bordered" />
+                            {/* <input type="text" placeholder="Search . . ." onChange={(event) => setSearchItem(event.target.value)} className="input input-bordered" /> */}
                         </div>
                     </div>
                     <div className="flex-none gap-2">
@@ -73,7 +73,6 @@ const Products = () => {
                     </div>
                 </div>
             </div>
-
             {/* add new product item button click on BillsRow handle and getting with a modal */}
             {
                 forModalPopUp && <AddProductOnModal

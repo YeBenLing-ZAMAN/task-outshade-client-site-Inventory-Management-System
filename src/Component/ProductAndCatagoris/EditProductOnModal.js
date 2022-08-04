@@ -1,9 +1,8 @@
-import { data } from 'autoprefixer';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const EditProductOnModal = ({ setReLoadChecked, editProduct }) => {
-    const { register, formState: { errors }, handleSubmit, control, reset } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [isLoading, setIsLoading] = useState(false);
     const [product, setProduct] = useState([]);
     const [allcatagory, setAllCatagory] = useState([]);
@@ -14,7 +13,7 @@ const EditProductOnModal = ({ setReLoadChecked, editProduct }) => {
         setIsLoading(true);
         // console.log(id);
         const loadData = async () => {
-            await fetch(`http://localhost:5000/product_list/${id}`, {
+            await fetch(`https://outshado.herokuapp.com/product_list/${id}`, {
                 method: "GET",
                 headers: {
                     // authorization: `Bearer ${localStorage.getItem('accesstoken')}`
@@ -33,7 +32,7 @@ const EditProductOnModal = ({ setReLoadChecked, editProduct }) => {
         setIsLoading(true);
         // console.log(id);
         const loadData = async () => {
-            await fetch(`http://localhost:5000/catagory_list`, {
+            await fetch(`https://outshado.herokuapp.com/catagory_list`, {
                 method: "GET",
                 headers: {
                     // authorization: `Bearer ${localStorage.getItem('accesstoken')}`
@@ -67,17 +66,11 @@ const EditProductOnModal = ({ setReLoadChecked, editProduct }) => {
         setProduct(items);
     }
 
-    // const handleChangeCatagory = (event) => {
-    //     const items = { name: name, quantity: quantity, price: price, catagory: catagory, _id: _id }
-    //     items.catagory = event.target.value;
-    //     setProduct(items);
-    // }
-
     const onSubmit = async (data, event) => {
         product.catagory = data.catagory;
         // console.log(product);
 
-        await fetch(`http://localhost:5000/update_product/${_id}`, {
+        await fetch(`https://outshado.herokuapp.com/update_product/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

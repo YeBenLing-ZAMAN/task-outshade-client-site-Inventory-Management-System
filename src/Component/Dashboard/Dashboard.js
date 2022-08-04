@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
@@ -23,8 +23,8 @@ const Dashboard = () => {
                     <ul className="menu p-4 overflow-y-auto w-48 bg-base-200 text-base-content ">
                         {/* <!-- Sidebar content here --> */}
                         <li className='mb-2'><Link to='/dashboard'>Products</Link></li>
-                        <li className='mb-2'><Link to='/dashboard/catagory'>Category</Link></li>
-                        <li className='mb-2'><Link to='/dashboard/profile'>My Profile</Link></li>
+                        <li className='mb-2'><NavLink to='/dashboard/catagory'>Category</NavLink></li>
+                        <li className='mb-2'><NavLink to='/dashboard/profile'>My Profile</NavLink></li>
                     </ul>
 
                 </div>

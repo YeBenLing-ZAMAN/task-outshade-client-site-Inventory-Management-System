@@ -14,7 +14,7 @@ const AddProductOnModal = ({ forModalPopUp, setaddmodalPopUpSuccesMessage, addmo
         setIsLoading(true);
         // console.log(id);
         const loadData = async () => {
-            await fetch(`http://localhost:5000/catagory_list`, {
+            await fetch(`https://outshado.herokuapp.com/catagory_list`, {
                 method: "GET",
                 headers: {
                     // authorization: `Bearer ${localStorage.getItem('accesstoken')}`
@@ -39,7 +39,7 @@ const AddProductOnModal = ({ forModalPopUp, setaddmodalPopUpSuccesMessage, addmo
         }
         console.log(productInfo);
 
-        await fetch(`http://localhost:5000/add_product`, {
+        await fetch(`https://outshado.herokuapp.com/add_product`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

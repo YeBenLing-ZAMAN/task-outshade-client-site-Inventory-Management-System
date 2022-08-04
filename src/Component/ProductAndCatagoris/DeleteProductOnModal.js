@@ -4,7 +4,7 @@ const DeleteProductOnModal = ({ deleteProduct,setReLoadChecked ,setDeleteProduct
     const { name, price, quantity, catagory, _id } = deleteProduct;
     const handleDelete = (_id) => {
         console.log(_id);
-        fetch(`http://localhost:5000/delete_product/${_id}`, {
+        fetch(`https://outshado.herokuapp.com/delete_product/${_id}`, {
             method: 'DELETE',
             headers: {
                 // authorization: `Bearer ${localStorage.getItem('accesstoken')}`
