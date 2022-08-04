@@ -129,6 +129,7 @@ const Products = () => {
                                 key={product._id}
                                 product={product}
                                 index={index}
+                                setDeleteProduct={setDeleteProduct}
                                 setEditProduct={setEditProduct}
                                 setEditmodalPopUpSuccesMessage={setEditmodalPopUpSuccesMessage}
                             ></ProductRow>)

@@ -3,12 +3,11 @@ import React from 'react';
 const DeleteProductOnModal = ({ deleteProduct,setReLoadChecked ,setDeleteProduct}) => {
     const { name, price, quantity, catagory, _id } = deleteProduct;
     const handleDelete = (_id) => {
-        // // console.log('i clicked');
-        // console.log(_id);
-        fetch(``, {
+        console.log(_id);
+        fetch(`http://localhost:5000/delete_product/${_id}`, {
             method: 'DELETE',
             headers: {
-                authorization: `Bearer ${localStorage.getItem('accesstoken')}`
+                // authorization: `Bearer ${localStorage.getItem('accesstoken')}`
             }
         })
             .then(res => res.json())
@@ -23,7 +22,6 @@ const DeleteProductOnModal = ({ deleteProduct,setReLoadChecked ,setDeleteProduct
 
             setDeleteProduct(null);
         // console.log(deleteBill);
-
     }
     return (
         <>
@@ -31,24 +29,20 @@ const DeleteProductOnModal = ({ deleteProduct,setReLoadChecked ,setDeleteProduct
                 <input type="checkbox" id="bill-delete-model-popup" className="modal-toggle" />
                 <div className="modal modal-bottom sm:modal-middle">
                     <div className="modal-box">
-                        <h3 className="font-bold text-xl text-red-500 capitalize text-center mb-8">Are you sure to delete that Product</h3>
+                        <h3 className="font-bold text-xl text-red-500 capitalize text-center mb-8">Are you sure to delete this Product</h3>
                         {/* table  */}
-                        <table className="table w-full">
+                        <table className="table w-full table-compact">
                             {/* <!-- head --> */}
                             <thead>
-                                <tr>
+                                <tr className='text-blue-600'>
                                     <th>Headding</th>
                                     <th>Details</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th>Product ID</th>
-                                    <td>{_id}</td>
-                                </tr>
-                                <tr>
                                     <th>Product Name</th>
-                                    <td>{name}</td>
+                                    <td className='uppercase'>{name}</td>
                                 </tr>
                                 <tr>
                                     <th>Product Price</th>
@@ -59,8 +53,8 @@ const DeleteProductOnModal = ({ deleteProduct,setReLoadChecked ,setDeleteProduct
                                     <td>{quantity}</td>
                                 </tr>
                                 <tr>
-                                    <th>Pruduct Catagory</th>
-                                    <td>{catagory}</td>
+                                    <th className='text-red-500'>Pruduct Catagory</th>
+                                    <td className='uppercase'>{catagory}</td>
                                 </tr>
                             </tbody>
                         </table>

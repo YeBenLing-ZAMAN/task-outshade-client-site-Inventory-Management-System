@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProductRow = ({product,setEditProduct,setDeleteProduct,setEditmodalPopUpSuccesMessage}) => {
     const {name, price, quantity, catagory, _id } = product;
-    console.log(product);
+    // console.log(product);
     const handleEditbutton = (_id)=>{
         setEditProduct(_id);
         setEditmodalPopUpSuccesMessage(true);

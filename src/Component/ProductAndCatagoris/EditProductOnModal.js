@@ -12,7 +12,7 @@ const EditProductOnModal = ({ setReLoadChecked, editProduct }) => {
 
     useEffect(() => {
         setIsLoading(true);
-        console.log(id);
+        // console.log(id);
         const loadData = async () => {
             await fetch(`http://localhost:5000/product_list/${id}`, {
                 method: "GET",
@@ -31,7 +31,7 @@ const EditProductOnModal = ({ setReLoadChecked, editProduct }) => {
 
     useEffect(() => {
         setIsLoading(true);
-        console.log(id);
+        // console.log(id);
         const loadData = async () => {
             await fetch(`http://localhost:5000/catagory_list`, {
                 method: "GET",
@@ -147,15 +147,6 @@ const EditProductOnModal = ({ setReLoadChecked, editProduct }) => {
                                                 <input type="number" className="input input-bordered w-full max-w-xs"
                                                     onChange={handleChangePrice} value={price} required />
                                             </div>
-
-                                            {/* <div className="form-control w-full max-w-xs">
-                                                <label className="label">
-                                                    <span className="label-text">Catagory</span>
-                                                </label>
-                                                <input type="text" className="input input-bordered w-full max-w-xs"
-                                                    onChange={handleChangeCatagory} value={catagory} required />
-                                            </div> */}
-
 
                                             <div className="form-control w-full max-w-xs">
                                                 <label className="label">
