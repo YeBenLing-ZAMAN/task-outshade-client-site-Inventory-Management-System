@@ -28,7 +28,6 @@ const Catagory = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        // console.log(id);
         const loadData = async () => {
             await fetch(`http://localhost:5000/catagory_list`, {
                 method: "GET",
@@ -40,7 +39,7 @@ const Catagory = () => {
                 .then(data => {
                     setAllCatagory(data);
                     setIsLoading(false);
-                    setCatagoryReLoader = (false);
+                    setCatagoryReLoader(false);
                 })
         }
         loadData();
@@ -49,6 +48,7 @@ const Catagory = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+
     return (
         <>
             <div className='mt-1'>
@@ -84,6 +84,7 @@ const Catagory = () => {
                     forModalPopUp={forModalPopUp}
                     setaddmodalPopUpSuccesMessage={setaddmodalPopUpSuccesMessage}
                     addmodalPopUpSuccesMessage={addmodalPopUpSuccesMessage}
+                    setCatagoryReLoader={setCatagoryReLoader}
                 ></AddCatagoryOnModal>
             }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 
-const AddCatagoryOnModal = ({ forModalPopUp, addmodalPopUpSuccesMessage, setaddmodalPopUpSuccesMessage }) => {
+const AddCatagoryOnModal = ({ forModalPopUp, addmodalPopUpSuccesMessage, setaddmodalPopUpSuccesMessage,setCatagoryReLoader }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [addtoggle, setToggle] = useState(true);
 
@@ -30,6 +30,7 @@ const AddCatagoryOnModal = ({ forModalPopUp, addmodalPopUpSuccesMessage, setaddm
                     reset();
                     setToggle(false);
                     setaddmodalPopUpSuccesMessage(false);
+                    setCatagoryReLoader(true);
                 } else {
                     console.log("failed to added in db");
                 }

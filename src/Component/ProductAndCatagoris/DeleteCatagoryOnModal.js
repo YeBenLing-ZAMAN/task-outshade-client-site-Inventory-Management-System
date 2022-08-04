@@ -2,9 +2,27 @@ import React from 'react';
 
 const DeleteCatagoryOnModal = ({ catagoryDelete, setCatagoryDelete, setCatagoryReLoader }) => {
     // console.log(catagoryDelete);
-    const { catagory, _id} = catagoryDelete;
+    const { catagory, _id } = catagoryDelete;
     const handleDelete = (_id) => {
         console.log(_id);
+
+        fetch(`http://localhost:5000/delete_catagory/${_id}`, {
+            method: 'DELETE',
+            headers: {
+                // authorization: `Bearer ${localStorage.getItem('accesstoken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                //  // console.log(data);
+                if (data.deletedCount) {
+                    // console.log(`bill items is deleted`);
+                    // refetch();
+                    setCatagoryReLoader(true);
+                }
+            })
+
+        setCatagoryDelete(null);
 
     }
     return (
