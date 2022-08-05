@@ -2,7 +2,7 @@
 
 first user need to register in and then need to loging. 
 
-here example for user and password:
+here user credential information for login:
 - user: zaman@admin.com   
 - email: 123456
 
